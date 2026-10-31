@@ -1,0 +1,826 @@
+feature,group,missing_share,max_share,strategy,fill_value,add_indicator,transforms,fold,правило
+duration,numeric_continuous,0.0,0.1,median,18.0,False,interactions → yeo_johnson,0,median
+credit_amount,numeric_continuous,0.1988,0.4,median,2333.0,True,interactions → yeo_johnson,0,median +I
+age,numeric_continuous,0.0488,0.1,median,33.0,False,interactions → yeo_johnson,0,median
+installment_rate,numeric_discrete,0.0,0.1,median,3.0,False,standard_scaler,0,median
+residence_since,numeric_discrete,0.5038,1.0,constant,0,True,standard_scaler,0,constant +I
+existing_credits,numeric_discrete,0.0,0.1,median,1.0,False,standard_scaler,0,median
+checking_account,categorical_nominal,0.0,0.1,most_frequent,no account,False,oof_woe,0,most_frequent
+credit_history,categorical_nominal,0.0,0.1,most_frequent,existing paid duly,False,oof_woe,0,most_frequent
+purpose,categorical_nominal,0.2625,1.0,constant,Missing,False,oof_woe,0,constant
+savings_account,categorical_nominal,0.055,0.1,most_frequent,<100 DM,False,oof_woe,0,most_frequent
+other_debtors,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,0,most_frequent
+property,categorical_nominal,0.0,0.1,most_frequent,car or other,False,oof_woe,0,most_frequent
+other_installment_plans,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,0,most_frequent
+housing,categorical_nominal,0.0,0.1,most_frequent,own,False,oof_woe,0,most_frequent
+telephone,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,0,most_frequent
+employment_since,categorical_ordinal,0.1487,1.0,constant,Missing,False,ordinal_encoder → standard_scaler,0,constant
+job,categorical_ordinal,0.0275,0.1,most_frequent,skilled employee,False,ordinal_encoder → standard_scaler,0,most_frequent
+complaint_text,complaint_text,0.0,1.0,constant,,False,tfidf_svd → standard_scaler,0,constant
+complaint_month,complaint_time,0.0,0.1,median,7.0,False,cyclic_time,0,median
+complaint_weekday,complaint_time,0.0,0.1,median,2.0,False,cyclic_time,0,median
+complaint_company,high_cardinality,0.0,0.1,most_frequent,Santander Consumer USA Holdings Inc,False,oof_woe,0,most_frequent
+sig_zcr,payment_signal,0.0238,0.1,median,0.10625,False,standard_scaler,0,median
+sig_centroid,payment_signal,0.0238,0.1,median,1.8829173201528604,False,standard_scaler,0,median
+sig_mfcc0,payment_signal,0.0238,0.1,median,56.6892933697084,False,standard_scaler,0,median
+sig_mfcc1,payment_signal,0.0238,0.1,median,7.592139051432445,False,standard_scaler,0,median
+sig_mfcc2,payment_signal,0.0238,0.1,median,-35.21950649207889,False,standard_scaler,0,median
+sig_mfcc3,payment_signal,0.0238,0.1,median,0.3168099891562624,False,standard_scaler,0,median
+sig_mfcc4,payment_signal,0.0238,0.1,median,-36.8804335451222,False,standard_scaler,0,median
+sig_mfcc5,payment_signal,0.0238,0.1,median,-2.8377025731029124,False,standard_scaler,0,median
+sig_mfcc6,payment_signal,0.0238,0.1,median,-35.65600363570325,False,standard_scaler,0,median
+sig_mfcc7,payment_signal,0.0238,0.1,median,-3.3755968603590585,False,standard_scaler,0,median
+sig_mfcc8,payment_signal,0.0238,0.1,median,-31.58895392797443,False,standard_scaler,0,median
+sig_mfcc9,payment_signal,0.0238,0.1,median,-2.7702807496844946,False,standard_scaler,0,median
+sig_mfcc10,payment_signal,0.0238,0.1,median,-26.17924215234285,False,standard_scaler,0,median
+sig_mfcc11,payment_signal,0.0238,0.1,median,-1.5167836258397216,False,standard_scaler,0,median
+sig_mfcc12,payment_signal,0.0238,0.1,median,-20.04651943916094,False,standard_scaler,0,median
+COUNT_payments,dfs_features,0.0,0.1,median,24.0,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,38466.945,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,39189.8925,False,yeo_johnson,0,median
+MAX_payments_DAYS_INSTALMENT,dfs_features,0.02,0.1,median,-78.0,False,yeo_johnson,0,median
+MAX_payments_DAYS_LATE,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,12.0,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,12805.585859728506,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,12740.613389423075,False,yeo_johnson,0,median
+MEAN_payments_DAYS_INSTALMENT,dfs_features,0.02,0.1,median,-792.1691729323309,False,yeo_johnson,0,median
+MEAN_payments_DAYS_LATE,dfs_features,0.02,0.1,median,-9.851648351648354,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,6.0,False,yeo_johnson,0,median
+age_div_credit_amount,dfs_features,0.24,0.4,median,0.01401427221522315,True,yeo_johnson,0,median +I
+age_div_duration,dfs_features,0.0488,0.1,median,1.7916666666666667,False,yeo_johnson,0,median
+credit_amount_div_age,dfs_features,0.24,0.4,median,71.35606060606061,True,yeo_johnson,0,median +I
+credit_amount_div_duration,dfs_features,0.1988,0.4,median,131.89583333333334,True,yeo_johnson,0,median +I
+duration_div_age,dfs_features,0.0488,0.1,median,0.5581395348837209,False,yeo_johnson,0,median
+duration_div_credit_amount,dfs_features,0.1988,0.4,median,0.0075817406412888,True,yeo_johnson,0,median +I
+NATURAL_LOGARITHM_age,dfs_features,0.0488,0.1,median,3.49650756146648,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_credit_amount,dfs_features,0.1988,0.4,median,7.75491027202143,True,yeo_johnson,0,median +I
+NATURAL_LOGARITHM_duration,dfs_features,0.0,0.1,median,2.8903717578961645,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0213,0.1,median,1.0,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,18299.52,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,18546.21,False,yeo_johnson,0,median
+MAX_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.02,0.1,median,10.557516263392763,False,yeo_johnson,0,median
+MAX_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.02,0.1,median,10.57617410374949,False,yeo_johnson,0,median
+MAX_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2.4849066497880004,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0017622853317548499,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0213,0.1,median,0.0037073747316242,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0213,0.1,median,1.0,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,3437.0636248358715,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,3497.187705446232,False,yeo_johnson,0,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.02,0.1,median,9.160910601206433,False,yeo_johnson,0,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0213,0.1,median,9.034935525126658,False,yeo_johnson,0,median
+MEAN_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,1.5746838395294067,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.00069194818975245,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0213,0.1,median,0.00114640628728,False,yeo_johnson,0,median
+COUNT_payments_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0006256272472752,False,yeo_johnson,0,median
+COUNT_payments_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00059322733526695,False,yeo_johnson,0,median
+COUNT_payments_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,1.625,False,yeo_johnson,0,median
+COUNT_payments_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0018482286722357,False,yeo_johnson,0,median
+COUNT_payments_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00183705539674575,False,yeo_johnson,0,median
+COUNT_payments_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,3.550055735877512,False,yeo_johnson,0,median
+COUNT_payments_div_age,dfs_features,0.0488,0.1,median,0.7105263157894737,False,yeo_johnson,0,median
+COUNT_payments_div_credit_amount,dfs_features,0.1988,0.4,median,0.0093632958801498,True,yeo_johnson,0,median +I
+COUNT_payments_div_duration,dfs_features,0.0,0.1,median,1.30625,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.02,0.1,median,1598.4869117647058,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2708.10171875,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,2.9521527431526526,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,2.9323249574909753,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,5890.4871639344265,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_age,dfs_features,0.0675,0.1,median,1063.1323839009287,False,yeo_johnson,0,median
+MAX_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2162,0.4,median,15.042069102462271,True,yeo_johnson,0,median +I
+MAX_payments_AMT_INSTALMENT_div_duration,dfs_features,0.02,0.1,median,2146.8661875,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.02,0.1,median,1685.7555340909091,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2762.1724090909092,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,3.001033028311922,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,2.9785002292244327,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,5993.000717449923,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_age,dfs_features,0.0675,0.1,median,1089.301875,False,yeo_johnson,0,median
+MAX_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2162,0.4,median,15.368174070247932,True,yeo_johnson,0,median +I
+MAX_payments_AMT_PAYMENT_div_duration,dfs_features,0.02,0.1,median,2148.41525,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.02,0.1,median,0.6153846153846154,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.00036926291950775,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.0003620356278,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0010750662667716,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00106717110060775,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2.1086996020858693,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0675,0.1,median,0.3928571428571428,False,yeo_johnson,0,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2162,0.4,median,0.0056585979251807,True,yeo_johnson,0,median +I
+MAX_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.02,0.1,median,0.75,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.02,0.1,median,541.059524872449,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.3387365118755651,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.3332191637040411,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,930.1756056141439,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2054.7405877610568,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_age,dfs_features,0.0675,0.1,median,384.6383200807813,False,yeo_johnson,0,median
+MEAN_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2162,0.4,median,5.4355656953434135,True,yeo_johnson,0,median +I
+MEAN_payments_AMT_INSTALMENT_div_duration,dfs_features,0.02,0.1,median,734.2732351973684,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.02,0.1,median,544.3617319036989,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.3410278127912879,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.3357525359545393,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,937.0603516584767,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,1979.6702252843397,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_age,dfs_features,0.0675,0.1,median,376.86392025300563,False,yeo_johnson,0,median
+MEAN_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2162,0.4,median,5.501828509439363,True,yeo_johnson,0,median +I
+MEAN_payments_AMT_PAYMENT_div_duration,dfs_features,0.02,0.1,median,729.5991648706896,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.02,0.1,median,0.28168639438085324,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0001697652626362,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00016686157588435,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,0.4742264881827989,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.00048668106262135004,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.0005051350816359,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0675,0.1,median,0.1861807331628303,False,yeo_johnson,0,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2162,0.4,median,0.0027146855052564,True,yeo_johnson,0,median +I
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.02,0.1,median,0.3479938271604938,False,yeo_johnson,0,median
+age_div_COUNT_payments,dfs_features,0.0675,0.1,median,1.3563492063492064,False,yeo_johnson,0,median
+age_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0675,0.1,median,0.00094062250543465,False,yeo_johnson,0,median
+age_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0675,0.1,median,0.0009180261563035,False,yeo_johnson,0,median
+age_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0675,0.1,median,2.5454545454545454,False,yeo_johnson,0,median
+age_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0675,0.1,median,0.00259985519474325,False,yeo_johnson,0,median
+age_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0675,0.1,median,0.0026534799057011497,False,yeo_johnson,0,median
+age_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0675,0.1,median,5.371126414166257,False,yeo_johnson,0,median
+credit_amount_div_COUNT_payments,dfs_features,0.2162,0.4,median,103.83333333333331,True,yeo_johnson,0,median +I
+credit_amount_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.2162,0.4,median,0.0664802157993216,True,yeo_johnson,0,median +I
+credit_amount_div_MAX_payments_AMT_PAYMENT,dfs_features,0.2162,0.4,median,0.0650695388683782,True,yeo_johnson,0,median +I
+credit_amount_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2162,0.4,median,176.72222222222223,True,yeo_johnson,0,median +I
+credit_amount_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.2162,0.4,median,0.1839734916379887,True,yeo_johnson,0,median +I
+credit_amount_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.2162,0.4,median,0.1817577553143146,True,yeo_johnson,0,median +I
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2162,0.4,median,368.3667953667954,True,yeo_johnson,0,median +I
+duration_div_COUNT_payments,dfs_features,0.02,0.1,median,0.75,False,yeo_johnson,0,median
+duration_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.00046580336927915,False,yeo_johnson,0,median
+duration_div_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00046546493713149997,False,yeo_johnson,0,median
+duration_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,1.3333333333333333,False,yeo_johnson,0,median
+duration_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,0.0013618916333298,False,yeo_johnson,0,median
+duration_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.0013706180952540998,False,yeo_johnson,0,median
+duration_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2.8736283185840708,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_COUNT_payments,dfs_features,0.02,0.1,median,3.1780538303479458,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MAX_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,10.557516263392763,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MAX_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,10.57617410374949,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,2.4849066497880004,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_INSTALMENT,dfs_features,0.02,0.1,median,9.45763647820691,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_PAYMENT,dfs_features,0.02,0.1,median,9.452548076812391,False,yeo_johnson,0,median
+NATURAL_LOGARITHM_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.02,0.1,median,1.791759469228055,False,yeo_johnson,0,median
+duration,numeric_continuous,0.0,0.1,median,18.0,False,interactions → yeo_johnson,1,median
+credit_amount,numeric_continuous,0.1925,0.4,median,2319.5,True,interactions → yeo_johnson,1,median +I
+age,numeric_continuous,0.055,0.1,median,33.0,False,interactions → yeo_johnson,1,median
+installment_rate,numeric_discrete,0.0,0.1,median,3.0,False,standard_scaler,1,median
+residence_since,numeric_discrete,0.4988,1.0,constant,0,True,standard_scaler,1,constant +I
+existing_credits,numeric_discrete,0.0,0.1,median,1.0,False,standard_scaler,1,median
+checking_account,categorical_nominal,0.0,0.1,most_frequent,no account,False,oof_woe,1,most_frequent
+credit_history,categorical_nominal,0.0,0.1,most_frequent,existing paid duly,False,oof_woe,1,most_frequent
+purpose,categorical_nominal,0.2412,1.0,constant,Missing,False,oof_woe,1,constant
+savings_account,categorical_nominal,0.0587,0.1,most_frequent,<100 DM,False,oof_woe,1,most_frequent
+other_debtors,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,1,most_frequent
+property,categorical_nominal,0.0,0.1,most_frequent,car or other,False,oof_woe,1,most_frequent
+other_installment_plans,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,1,most_frequent
+housing,categorical_nominal,0.0,0.1,most_frequent,own,False,oof_woe,1,most_frequent
+telephone,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,1,most_frequent
+employment_since,categorical_ordinal,0.1475,1.0,constant,Missing,False,ordinal_encoder → standard_scaler,1,constant
+job,categorical_ordinal,0.0312,0.1,most_frequent,skilled employee,False,ordinal_encoder → standard_scaler,1,most_frequent
+complaint_text,complaint_text,0.0,1.0,constant,,False,tfidf_svd → standard_scaler,1,constant
+complaint_month,complaint_time,0.0,0.1,median,7.0,False,cyclic_time,1,median
+complaint_weekday,complaint_time,0.0,0.1,median,2.0,False,cyclic_time,1,median
+complaint_company,high_cardinality,0.0,0.1,most_frequent,Santander Consumer USA Holdings Inc,False,oof_woe,1,most_frequent
+sig_zcr,payment_signal,0.02,0.1,median,0.1125,False,standard_scaler,1,median
+sig_centroid,payment_signal,0.02,0.1,median,1.8782629934139936,False,standard_scaler,1,median
+sig_mfcc0,payment_signal,0.02,0.1,median,57.80931234933229,False,standard_scaler,1,median
+sig_mfcc1,payment_signal,0.02,0.1,median,7.897796257176973,False,standard_scaler,1,median
+sig_mfcc2,payment_signal,0.02,0.1,median,-35.09975706864394,False,standard_scaler,1,median
+sig_mfcc3,payment_signal,0.02,0.1,median,0.32527359195249905,False,standard_scaler,1,median
+sig_mfcc4,payment_signal,0.02,0.1,median,-36.52071893073419,False,standard_scaler,1,median
+sig_mfcc5,payment_signal,0.02,0.1,median,-2.797182250300601,False,standard_scaler,1,median
+sig_mfcc6,payment_signal,0.02,0.1,median,-35.71775763238739,False,standard_scaler,1,median
+sig_mfcc7,payment_signal,0.02,0.1,median,-3.5299537635693277,False,standard_scaler,1,median
+sig_mfcc8,payment_signal,0.02,0.1,median,-31.699923939079326,False,standard_scaler,1,median
+sig_mfcc9,payment_signal,0.02,0.1,median,-2.8969581863671547,False,standard_scaler,1,median
+sig_mfcc10,payment_signal,0.02,0.1,median,-26.220291718278986,False,standard_scaler,1,median
+sig_mfcc11,payment_signal,0.02,0.1,median,-1.4951250620695657,False,standard_scaler,1,median
+sig_mfcc12,payment_signal,0.02,0.1,median,-19.89752076729762,False,standard_scaler,1,median
+COUNT_payments,dfs_features,0.0,0.1,median,25.0,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,38615.1075,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,39189.8925,False,yeo_johnson,1,median
+MAX_payments_DAYS_INSTALMENT,dfs_features,0.0175,0.1,median,-78.5,False,yeo_johnson,1,median
+MAX_payments_DAYS_LATE,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,12.0,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,12726.083408653845,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,12685.012633928573,False,yeo_johnson,1,median
+MEAN_payments_DAYS_INSTALMENT,dfs_features,0.0175,0.1,median,-817.6035469107551,False,yeo_johnson,1,median
+MEAN_payments_DAYS_LATE,dfs_features,0.0175,0.1,median,-9.892857142857142,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,6.041958041958042,False,yeo_johnson,1,median
+age_div_credit_amount,dfs_features,0.2412,0.4,median,0.014993481095176,True,yeo_johnson,1,median +I
+age_div_duration,dfs_features,0.055,0.1,median,1.8333333333333333,False,yeo_johnson,1,median
+credit_amount_div_age,dfs_features,0.2412,0.4,median,66.69565217391305,True,yeo_johnson,1,median +I
+credit_amount_div_duration,dfs_features,0.1925,0.4,median,129.625,True,yeo_johnson,1,median +I
+duration_div_age,dfs_features,0.055,0.1,median,0.5454545454545454,False,yeo_johnson,1,median
+duration_div_credit_amount,dfs_features,0.1925,0.4,median,0.00771456203142685,True,yeo_johnson,1,median +I
+NATURAL_LOGARITHM_age,dfs_features,0.055,0.1,median,3.49650756146648,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_credit_amount,dfs_features,0.1925,0.4,median,7.749106900957944,True,yeo_johnson,1,median +I
+NATURAL_LOGARITHM_duration,dfs_features,0.0,0.1,median,2.8903717578961645,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,17672.5125,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,17799.75,False,yeo_johnson,1,median
+MAX_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,10.561386941017052,False,yeo_johnson,1,median
+MAX_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0175,0.1,median,10.57617410374949,False,yeo_johnson,1,median
+MAX_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2.4849066497880004,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.00181514948627595,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.00402367265234445,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.02,0.1,median,1.0,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,3424.4168306282236,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,3437.0636248358715,False,yeo_johnson,1,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,9.150882742348085,False,yeo_johnson,1,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.02,0.1,median,9.02559391782221,False,yeo_johnson,1,median
+MEAN_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1.5864584155974022,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0007098489638877,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.02,0.1,median,0.001159609513592,False,yeo_johnson,1,median
+COUNT_payments_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0006491994943477999,False,yeo_johnson,1,median
+COUNT_payments_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.0006443150792874,False,yeo_johnson,1,median
+COUNT_payments_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1.6363636363636365,False,yeo_johnson,1,median
+COUNT_payments_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0019476061244789499,False,yeo_johnson,1,median
+COUNT_payments_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.00192788447500395,False,yeo_johnson,1,median
+COUNT_payments_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,3.616347148848102,False,yeo_johnson,1,median
+COUNT_payments_div_age,dfs_features,0.055,0.1,median,0.75,False,yeo_johnson,1,median
+COUNT_payments_div_credit_amount,dfs_features,0.1925,0.4,median,0.01054058981722045,True,yeo_johnson,1,median +I
+COUNT_payments_div_duration,dfs_features,0.0,0.1,median,1.4166666666666667,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0175,0.1,median,1540.3601785714286,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2580.9896739130436,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,3.0330474447973548,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,3.0023932698691493,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,5558.653190024479,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_age,dfs_features,0.0712,0.1,median,1082.10375,False,yeo_johnson,1,median
+MAX_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2075,0.4,median,16.14745191825226,True,yeo_johnson,1,median +I
+MAX_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0175,0.1,median,2287.7775,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0175,0.1,median,1552.0620320855614,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2592.3649769585254,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,3.0826143829937056,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,3.087485555058292,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,5659.236987346263,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_age,dfs_features,0.0712,0.1,median,1086.29625,False,yeo_johnson,1,median
+MAX_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2075,0.4,median,16.24520319473503,True,yeo_johnson,1,median +I
+MAX_payments_AMT_PAYMENT_div_duration,dfs_features,0.0175,0.1,median,2290.9206249999997,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0175,0.1,median,0.6111111111111112,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0003874482792033,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.00038574858235055005,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.00109694735409135,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.00109289887467735,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2.1333703806612947,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0712,0.1,median,0.4,False,yeo_johnson,1,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2075,0.4,median,0.00633247022475905,True,yeo_johnson,1,median +I
+MAX_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0175,0.1,median,0.8,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0175,0.1,median,513.4513765251761,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.3297014037054796,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.3244007109611579,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,911.6208492647058,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1952.24240616622,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_age,dfs_features,0.0712,0.1,median,376.4501346604215,False,yeo_johnson,1,median
+MEAN_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2075,0.4,median,5.573532467482951,True,yeo_johnson,1,median +I
+MEAN_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0175,0.1,median,730.2985085227272,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0175,0.1,median,518.7035861421832,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.33306866095482446,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.32388815633652496,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,915.0021060985139,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,1.0,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1924.9254555508742,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_age,dfs_features,0.0712,0.1,median,369.52561875,False,yeo_johnson,1,median
+MEAN_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2075,0.4,median,5.594144400410185,True,yeo_johnson,1,median +I
+MEAN_payments_AMT_PAYMENT_div_duration,dfs_features,0.0175,0.1,median,719.07925,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0175,0.1,median,0.2765221791195817,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.00017990156209995,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.00017673214827624998,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,0.4687423687423687,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0005122314716822,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.0005195006545822499,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0712,0.1,median,0.1868390129259694,False,yeo_johnson,1,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2075,0.4,median,0.0029809269119036,True,yeo_johnson,1,median +I
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0175,0.1,median,0.36961104311165516,False,yeo_johnson,1,median
+age_div_COUNT_payments,dfs_features,0.0712,0.1,median,1.318181818181818,False,yeo_johnson,1,median
+age_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0712,0.1,median,0.0009241258058665,False,yeo_johnson,1,median
+age_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0712,0.1,median,0.0009205591936822,False,yeo_johnson,1,median
+age_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0712,0.1,median,2.5,False,yeo_johnson,1,median
+age_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0712,0.1,median,0.0026563943213941,False,yeo_johnson,1,median
+age_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0712,0.1,median,0.0027061723173151,False,yeo_johnson,1,median
+age_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0712,0.1,median,5.352201257861635,False,yeo_johnson,1,median
+credit_amount_div_COUNT_payments,dfs_features,0.2075,0.4,median,92.19761904761907,True,yeo_johnson,1,median +I
+credit_amount_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.2075,0.4,median,0.06192927566092825,True,yeo_johnson,1,median +I
+credit_amount_div_MAX_payments_AMT_PAYMENT,dfs_features,0.2075,0.4,median,0.06155749410131215,True,yeo_johnson,1,median +I
+credit_amount_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2075,0.4,median,157.925,True,yeo_johnson,1,median +I
+credit_amount_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.2075,0.4,median,0.179419438199766,True,yeo_johnson,1,median +I
+credit_amount_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.2075,0.4,median,0.17876045186663314,True,yeo_johnson,1,median +I
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2075,0.4,median,335.4662447257384,True,yeo_johnson,1,median +I
+duration_div_COUNT_payments,dfs_features,0.0175,0.1,median,0.6923076923076923,False,yeo_johnson,1,median
+duration_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.00043710545047005,False,yeo_johnson,1,median
+duration_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.00043650642180475,False,yeo_johnson,1,median
+duration_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1.25,False,yeo_johnson,1,median
+duration_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,0.0013693032915759501,False,yeo_johnson,1,median
+duration_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,0.0013906673379337,False,yeo_johnson,1,median
+duration_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2.7055749128919864,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_COUNT_payments,dfs_features,0.0175,0.1,median,3.258096538021482,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MAX_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,10.561386941017052,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MAX_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,10.57617410374949,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,2.4849066497880004,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0175,0.1,median,9.451408608612754,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_PAYMENT,dfs_features,0.0175,0.1,median,9.448174395144942,False,yeo_johnson,1,median
+NATURAL_LOGARITHM_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0175,0.1,median,1.798727971095132,False,yeo_johnson,1,median
+duration,numeric_continuous,0.0,0.1,median,18.0,False,interactions → yeo_johnson,2,median
+credit_amount,numeric_continuous,0.2025,0.4,median,2321.5,True,interactions → yeo_johnson,2,median +I
+age,numeric_continuous,0.0488,0.1,median,33.0,False,interactions → yeo_johnson,2,median
+installment_rate,numeric_discrete,0.0,0.1,median,3.0,False,standard_scaler,2,median
+residence_since,numeric_discrete,0.5012,1.0,constant,0,True,standard_scaler,2,constant +I
+existing_credits,numeric_discrete,0.0,0.1,median,1.0,False,standard_scaler,2,median
+checking_account,categorical_nominal,0.0,0.1,most_frequent,no account,False,oof_woe,2,most_frequent
+credit_history,categorical_nominal,0.0,0.1,most_frequent,existing paid duly,False,oof_woe,2,most_frequent
+purpose,categorical_nominal,0.25,1.0,constant,Missing,False,oof_woe,2,constant
+savings_account,categorical_nominal,0.06,0.1,most_frequent,<100 DM,False,oof_woe,2,most_frequent
+other_debtors,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,2,most_frequent
+property,categorical_nominal,0.0,0.1,most_frequent,car or other,False,oof_woe,2,most_frequent
+other_installment_plans,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,2,most_frequent
+housing,categorical_nominal,0.0,0.1,most_frequent,own,False,oof_woe,2,most_frequent
+telephone,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,2,most_frequent
+employment_since,categorical_ordinal,0.1512,1.0,constant,Missing,False,ordinal_encoder → standard_scaler,2,constant
+job,categorical_ordinal,0.0288,0.1,most_frequent,skilled employee,False,ordinal_encoder → standard_scaler,2,most_frequent
+complaint_text,complaint_text,0.0,1.0,constant,,False,tfidf_svd → standard_scaler,2,constant
+complaint_month,complaint_time,0.0,0.1,median,7.0,False,cyclic_time,2,median
+complaint_weekday,complaint_time,0.0,0.1,median,2.0,False,cyclic_time,2,median
+complaint_company,high_cardinality,0.0,0.1,most_frequent,Santander Consumer USA Holdings Inc,False,oof_woe,2,most_frequent
+sig_zcr,payment_signal,0.02,0.1,median,0.10113636363636361,False,standard_scaler,2,median
+sig_centroid,payment_signal,0.02,0.1,median,1.8413655405331553,False,standard_scaler,2,median
+sig_mfcc0,payment_signal,0.02,0.1,median,57.27151805543972,False,standard_scaler,2,median
+sig_mfcc1,payment_signal,0.02,0.1,median,7.982286886693707,False,standard_scaler,2,median
+sig_mfcc2,payment_signal,0.02,0.1,median,-35.215346426234284,False,standard_scaler,2,median
+sig_mfcc3,payment_signal,0.02,0.1,median,0.30661116391382726,False,standard_scaler,2,median
+sig_mfcc4,payment_signal,0.02,0.1,median,-36.41571735630593,False,standard_scaler,2,median
+sig_mfcc5,payment_signal,0.02,0.1,median,-2.8440188795496564,False,standard_scaler,2,median
+sig_mfcc6,payment_signal,0.02,0.1,median,-35.600845875449934,False,standard_scaler,2,median
+sig_mfcc7,payment_signal,0.02,0.1,median,-3.446198152664665,False,standard_scaler,2,median
+sig_mfcc8,payment_signal,0.02,0.1,median,-31.616343655979726,False,standard_scaler,2,median
+sig_mfcc9,payment_signal,0.02,0.1,median,-2.828221732884799,False,standard_scaler,2,median
+sig_mfcc10,payment_signal,0.02,0.1,median,-26.143104772657672,False,standard_scaler,2,median
+sig_mfcc11,payment_signal,0.02,0.1,median,-1.5201597619735843,False,standard_scaler,2,median
+sig_mfcc12,payment_signal,0.02,0.1,median,-19.85124162672018,False,standard_scaler,2,median
+COUNT_payments,dfs_features,0.0,0.1,median,24.0,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,37124.685,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,37833.75,False,yeo_johnson,2,median
+MAX_payments_DAYS_INSTALMENT,dfs_features,0.0163,0.1,median,-83.0,False,yeo_johnson,2,median
+MAX_payments_DAYS_LATE,dfs_features,0.0163,0.1,median,0.0,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,12.0,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,13095.190588235297,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,12945.528,False,yeo_johnson,2,median
+MEAN_payments_DAYS_INSTALMENT,dfs_features,0.0163,0.1,median,-798.0,False,yeo_johnson,2,median
+MEAN_payments_DAYS_LATE,dfs_features,0.0163,0.1,median,-10.0,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,6.0,False,yeo_johnson,2,median
+age_div_credit_amount,dfs_features,0.2425,0.4,median,0.01463917225864005,True,yeo_johnson,2,median +I
+age_div_duration,dfs_features,0.0488,0.1,median,1.8333333333333333,False,yeo_johnson,2,median
+credit_amount_div_age,dfs_features,0.2425,0.4,median,68.30995475113122,True,yeo_johnson,2,median +I
+credit_amount_div_duration,dfs_features,0.2025,0.4,median,130.33333333333331,True,yeo_johnson,2,median +I
+duration_div_age,dfs_features,0.0488,0.1,median,0.5454545454545454,False,yeo_johnson,2,median
+duration_div_credit_amount,dfs_features,0.2025,0.4,median,0.007672646817862901,True,yeo_johnson,2,median +I
+NATURAL_LOGARITHM_age,dfs_features,0.0488,0.1,median,3.49650756146648,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_credit_amount,dfs_features,0.2025,0.4,median,7.749968598715382,True,yeo_johnson,2,median +I
+NATURAL_LOGARITHM_duration,dfs_features,0.0,0.1,median,2.8903717578961645,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0187,0.1,median,1.0,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,17833.59,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,17848.08,False,yeo_johnson,2,median
+MAX_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,10.52203739122052,False,yeo_johnson,2,median
+MAX_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0163,0.1,median,10.5409568403907,False,yeo_johnson,2,median
+MAX_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2.4849066497880004,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0017187815557551,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0187,0.1,median,0.0034371525253618,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0187,0.1,median,1.0,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,3477.6976666666665,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,3465.4277731984,False,yeo_johnson,2,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,9.179414990037554,False,yeo_johnson,2,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0187,0.1,median,9.048139046575749,False,yeo_johnson,2,median
+MEAN_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,1.5785905807742404,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0006959794323599,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0187,0.1,median,0.0010809851836738,False,yeo_johnson,2,median
+COUNT_payments_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.000640723761561,False,yeo_johnson,2,median
+COUNT_payments_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0006315032999204,False,yeo_johnson,2,median
+COUNT_payments_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,1.6363636363636365,False,yeo_johnson,2,median
+COUNT_payments_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0018208518491205,False,yeo_johnson,2,median
+COUNT_payments_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0018010273583534,False,yeo_johnson,2,median
+COUNT_payments_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,3.608910891089109,False,yeo_johnson,2,median
+COUNT_payments_div_age,dfs_features,0.0488,0.1,median,0.7105263157894737,False,yeo_johnson,2,median
+COUNT_payments_div_credit_amount,dfs_features,0.2025,0.4,median,0.0098413063411627,True,yeo_johnson,2,median +I
+COUNT_payments_div_duration,dfs_features,0.0,0.1,median,1.3779761904761905,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0163,0.1,median,1560.735,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2660.65125,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,2.931116407586568,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,2.904123683074204,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,5723.065384615385,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_age,dfs_features,0.0638,0.1,median,1019.3120689655173,False,yeo_johnson,2,median
+MAX_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2175,0.4,median,15.309091249280627,True,yeo_johnson,2,median +I
+MAX_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0163,0.1,median,2155.848,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0163,0.1,median,1583.523,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2690.9625,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,2.9422283719545086,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,2.948059207092009,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,5777.04,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_age,dfs_features,0.0638,0.1,median,1046.5116279069769,False,yeo_johnson,2,median
+MAX_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2175,0.4,median,15.538780872877476,True,yeo_johnson,2,median +I
+MAX_payments_AMT_PAYMENT_div_duration,dfs_features,0.0163,0.1,median,2156.14125,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0163,0.1,median,0.6111111111111112,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0003758478304888,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0003716142458321,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0010692312664606,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0010814545378141,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2.1274238227146816,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0638,0.1,median,0.3846153846153846,False,yeo_johnson,2,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2175,0.4,median,0.0058386559934547,True,yeo_johnson,2,median +I
+MAX_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0163,0.1,median,0.7777777777777778,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0163,0.1,median,549.1935000000001,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.3411669346914076,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.3398784436762482,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,935.2513636363636,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2016.1336764705884,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_age,dfs_features,0.0638,0.1,median,381.3373211781206,False,yeo_johnson,2,median
+MEAN_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2175,0.4,median,5.525560073005356,True,yeo_johnson,2,median +I
+MEAN_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0163,0.1,median,758.4219642857142,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0163,0.1,median,555.2386505190311,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.344337951523275,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.3392062132247365,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,924.6805714285714,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,1962.209,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_age,dfs_features,0.0638,0.1,median,375.75171666666665,False,yeo_johnson,2,median
+MEAN_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2175,0.4,median,5.61692038676134,True,yeo_johnson,2,median +I
+MEAN_payments_AMT_PAYMENT_div_duration,dfs_features,0.0163,0.1,median,740.6493115942029,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0163,0.1,median,0.2770919067215364,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.000174731535077,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.000173099026491,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,0.4700520833333333,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.000495998857452,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0005096297081503,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0638,0.1,median,0.1853448275862069,False,yeo_johnson,2,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2175,0.4,median,0.0027384852251983,True,yeo_johnson,2,median +I
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0163,0.1,median,0.3619047619047619,False,yeo_johnson,2,median
+age_div_COUNT_payments,dfs_features,0.0638,0.1,median,1.3636363636363635,False,yeo_johnson,2,median
+age_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0638,0.1,median,0.0009810538209509,False,yeo_johnson,2,median
+age_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0638,0.1,median,0.0009555555555555,False,yeo_johnson,2,median
+age_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0638,0.1,median,2.6,False,yeo_johnson,2,median
+age_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0638,0.1,median,0.0026223501987965,False,yeo_johnson,2,median
+age_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0638,0.1,median,0.0026613318200409,False,yeo_johnson,2,median
+age_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0638,0.1,median,5.395348837209302,False,yeo_johnson,2,median
+credit_amount_div_COUNT_payments,dfs_features,0.2175,0.4,median,98.00512820512822,True,yeo_johnson,2,median +I
+credit_amount_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.2175,0.4,median,0.06532074856575709,True,yeo_johnson,2,median +I
+credit_amount_div_MAX_payments_AMT_PAYMENT,dfs_features,0.2175,0.4,median,0.0643628718610943,True,yeo_johnson,2,median +I
+credit_amount_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2175,0.4,median,171.27272727272725,True,yeo_johnson,2,median +I
+credit_amount_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.2175,0.4,median,0.18098037965429103,True,yeo_johnson,2,median +I
+credit_amount_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.2175,0.4,median,0.1780335106730947,True,yeo_johnson,2,median +I
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2175,0.4,median,365.1662184658727,True,yeo_johnson,2,median +I
+duration_div_COUNT_payments,dfs_features,0.0163,0.1,median,0.7058823529411765,False,yeo_johnson,2,median
+duration_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0004638545945725,False,yeo_johnson,2,median
+duration_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0004637915071658,False,yeo_johnson,2,median
+duration_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,1.2857142857142858,False,yeo_johnson,2,median
+duration_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,0.0013185272145194,False,yeo_johnson,2,median
+duration_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.001350166650189,False,yeo_johnson,2,median
+duration_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2.7631578947368425,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_COUNT_payments,dfs_features,0.0163,0.1,median,3.1780538303479458,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MAX_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,10.52203739122052,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MAX_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,10.5409568403907,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,2.4849066497880004,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0163,0.1,median,9.48000031111122,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_PAYMENT,dfs_features,0.0163,0.1,median,9.468505679302847,False,yeo_johnson,2,median
+NATURAL_LOGARITHM_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0163,0.1,median,1.791759469228055,False,yeo_johnson,2,median
+duration,numeric_continuous,0.0,0.1,median,18.0,False,interactions → yeo_johnson,3,median
+credit_amount,numeric_continuous,0.2025,0.4,median,2329.0,True,interactions → yeo_johnson,3,median +I
+age,numeric_continuous,0.0475,0.1,median,33.0,False,interactions → yeo_johnson,3,median
+installment_rate,numeric_discrete,0.0,0.1,median,3.0,False,standard_scaler,3,median
+residence_since,numeric_discrete,0.4988,1.0,constant,0,True,standard_scaler,3,constant +I
+existing_credits,numeric_discrete,0.0,0.1,median,1.0,False,standard_scaler,3,median
+checking_account,categorical_nominal,0.0,0.1,most_frequent,no account,False,oof_woe,3,most_frequent
+credit_history,categorical_nominal,0.0,0.1,most_frequent,existing paid duly,False,oof_woe,3,most_frequent
+purpose,categorical_nominal,0.2587,1.0,constant,Missing,False,oof_woe,3,constant
+savings_account,categorical_nominal,0.0638,0.1,most_frequent,<100 DM,False,oof_woe,3,most_frequent
+other_debtors,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,3,most_frequent
+property,categorical_nominal,0.0,0.1,most_frequent,car or other,False,oof_woe,3,most_frequent
+other_installment_plans,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,3,most_frequent
+housing,categorical_nominal,0.0,0.1,most_frequent,own,False,oof_woe,3,most_frequent
+telephone,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,3,most_frequent
+employment_since,categorical_ordinal,0.155,1.0,constant,Missing,False,ordinal_encoder → standard_scaler,3,constant
+job,categorical_ordinal,0.0288,0.1,most_frequent,skilled employee,False,ordinal_encoder → standard_scaler,3,most_frequent
+complaint_text,complaint_text,0.0,1.0,constant,,False,tfidf_svd → standard_scaler,3,constant
+complaint_month,complaint_time,0.0,0.1,median,7.0,False,cyclic_time,3,median
+complaint_weekday,complaint_time,0.0,0.1,median,2.0,False,cyclic_time,3,median
+complaint_company,high_cardinality,0.0,0.1,most_frequent,Santander Consumer USA Holdings Inc,False,oof_woe,3,most_frequent
+sig_zcr,payment_signal,0.015,0.1,median,0.1125,False,standard_scaler,3,median
+sig_centroid,payment_signal,0.015,0.1,median,1.8860845599370641,False,standard_scaler,3,median
+sig_mfcc0,payment_signal,0.015,0.1,median,57.802595869411405,False,standard_scaler,3,median
+sig_mfcc1,payment_signal,0.015,0.1,median,7.542332745529695,False,standard_scaler,3,median
+sig_mfcc2,payment_signal,0.015,0.1,median,-35.19515083301786,False,standard_scaler,3,median
+sig_mfcc3,payment_signal,0.015,0.1,median,0.3333729324109772,False,standard_scaler,3,median
+sig_mfcc4,payment_signal,0.015,0.1,median,-36.46742776639906,False,standard_scaler,3,median
+sig_mfcc5,payment_signal,0.015,0.1,median,-2.7882199549251516,False,standard_scaler,3,median
+sig_mfcc6,payment_signal,0.015,0.1,median,-35.56500451907749,False,standard_scaler,3,median
+sig_mfcc7,payment_signal,0.015,0.1,median,-3.4643472949062657,False,standard_scaler,3,median
+sig_mfcc8,payment_signal,0.015,0.1,median,-31.658224470155915,False,standard_scaler,3,median
+sig_mfcc9,payment_signal,0.015,0.1,median,-2.8431163489942133,False,standard_scaler,3,median
+sig_mfcc10,payment_signal,0.015,0.1,median,-26.122223616223735,False,standard_scaler,3,median
+sig_mfcc11,payment_signal,0.015,0.1,median,-1.4903346153877084,False,standard_scaler,3,median
+sig_mfcc12,payment_signal,0.015,0.1,median,-19.863857931243707,False,standard_scaler,3,median
+COUNT_payments,dfs_features,0.0,0.1,median,24.0,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,42085.17,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,43200.0,False,yeo_johnson,3,median
+MAX_payments_DAYS_INSTALMENT,dfs_features,0.0138,0.1,median,-65.0,False,yeo_johnson,3,median
+MAX_payments_DAYS_LATE,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,12.0,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,13325.925681818182,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,13244.951842105263,False,yeo_johnson,3,median
+MEAN_payments_DAYS_INSTALMENT,dfs_features,0.0138,0.1,median,-770.5507246376811,False,yeo_johnson,3,median
+MEAN_payments_DAYS_LATE,dfs_features,0.0138,0.1,median,-10.0,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,6.045454545454546,False,yeo_johnson,3,median
+age_div_credit_amount,dfs_features,0.2425,0.4,median,0.014779000039712449,True,yeo_johnson,3,median +I
+age_div_duration,dfs_features,0.0475,0.1,median,1.8333333333333333,False,yeo_johnson,3,median
+credit_amount_div_age,dfs_features,0.2425,0.4,median,67.66363636363636,True,yeo_johnson,3,median +I
+credit_amount_div_duration,dfs_features,0.2025,0.4,median,127.25,True,yeo_johnson,3,median +I
+duration_div_age,dfs_features,0.0475,0.1,median,0.5454545454545454,False,yeo_johnson,3,median
+duration_div_credit_amount,dfs_features,0.2025,0.4,median,0.00785857650146665,True,yeo_johnson,3,median +I
+NATURAL_LOGARITHM_age,dfs_features,0.0475,0.1,median,3.49650756146648,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_credit_amount,dfs_features,0.2025,0.4,median,7.753193901169025,True,yeo_johnson,3,median +I
+NATURAL_LOGARITHM_duration,dfs_features,0.0,0.1,median,2.8903717578961645,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,18571.995,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,18698.92,False,yeo_johnson,3,median
+MAX_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,10.6474507010815,False,yeo_johnson,3,median
+MAX_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0138,0.1,median,10.673595774232204,False,yeo_johnson,3,median
+MAX_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2.4849066497880004,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0017972455414831,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0039174975025953,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0163,0.1,median,1.0,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,3551.812741666667,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,3535.686661764706,False,yeo_johnson,3,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,9.183942765762552,False,yeo_johnson,3,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0163,0.1,median,9.0858174240536,False,yeo_johnson,3,median
+MEAN_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,1.5911188950794442,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.000707129630482,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0163,0.1,median,0.0011253151170918,False,yeo_johnson,3,median
+COUNT_payments_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0005967996321327,False,yeo_johnson,3,median
+COUNT_payments_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0005858585858585,False,yeo_johnson,3,median
+COUNT_payments_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,1.625,False,yeo_johnson,3,median
+COUNT_payments_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0018875127904797,False,yeo_johnson,3,median
+COUNT_payments_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0018722152904445,False,yeo_johnson,3,median
+COUNT_payments_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,3.636363636363636,False,yeo_johnson,3,median
+COUNT_payments_div_age,dfs_features,0.0475,0.1,median,0.7384176764076977,False,yeo_johnson,3,median
+COUNT_payments_div_credit_amount,dfs_features,0.2025,0.4,median,0.01031987476570375,True,yeo_johnson,3,median +I
+COUNT_payments_div_duration,dfs_features,0.0,0.1,median,1.3779761904761905,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0138,0.1,median,1675.60425,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2756.106818181818,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,3.0330699397109413,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,3.0042576032566064,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,5985.37945945946,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_age,dfs_features,0.0612,0.1,median,1142.2378125,False,yeo_johnson,3,median
+MAX_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.215,0.4,median,16.50076936335306,True,yeo_johnson,3,median +I
+MAX_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0138,0.1,median,2334.591,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0138,0.1,median,1706.896551724138,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2795.19075,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,3.077941952027255,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,3.0872868139601564,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,6093.106363636363,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_age,dfs_features,0.0612,0.1,median,1148.813780487805,False,yeo_johnson,3,median
+MAX_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.215,0.4,median,16.98060375078432,True,yeo_johnson,3,median +I
+MAX_payments_AMT_PAYMENT_div_duration,dfs_features,0.0138,0.1,median,2367.245625,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0138,0.1,median,0.6153846153846154,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0003628306397281,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0003577573373123,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0010947803903824,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0010860169330801,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2.140845070422535,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0612,0.1,median,0.4035087719298245,False,yeo_johnson,3,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.215,0.4,median,0.00616093501745255,True,yeo_johnson,3,median +I
+MAX_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0138,0.1,median,0.7916666666666666,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0138,0.1,median,529.797734375,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.3296989584405371,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.3248924169415736,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,913.4252027027028,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2016.1336764705884,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_age,dfs_features,0.0612,0.1,median,393.791451923077,False,yeo_johnson,3,median
+MEAN_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.215,0.4,median,6.0387407484714855,True,yeo_johnson,3,median +I
+MEAN_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0138,0.1,median,759.8545652173912,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0138,0.1,median,534.1266066481994,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.3328609367305929,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.3239090049807422,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,920.795955882353,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,1.0,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,1962.209,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_age,dfs_features,0.0612,0.1,median,388.8827878787879,False,yeo_johnson,3,median
+MEAN_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.215,0.4,median,5.915599090815521,True,yeo_johnson,3,median +I
+MEAN_payments_AMT_PAYMENT_div_duration,dfs_features,0.0138,0.1,median,741.2309375,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0138,0.1,median,0.275,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0001670737848407,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0001641198988364,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,0.4671052631578947,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.000495998857452,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0005096297081503,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0612,0.1,median,0.1903703703703703,False,yeo_johnson,3,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.215,0.4,median,0.0028798490009659004,True,yeo_johnson,3,median +I
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0138,0.1,median,0.368421052631579,False,yeo_johnson,3,median
+age_div_COUNT_payments,dfs_features,0.0612,0.1,median,1.34375,False,yeo_johnson,3,median
+age_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0612,0.1,median,0.000875474431906,False,yeo_johnson,3,median
+age_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0612,0.1,median,0.0008704630959208,False,yeo_johnson,3,median
+age_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0612,0.1,median,2.4782608695652173,False,yeo_johnson,3,median
+age_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0612,0.1,median,0.0025394152034446,False,yeo_johnson,3,median
+age_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0612,0.1,median,0.0025714689134343,False,yeo_johnson,3,median
+age_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0612,0.1,median,5.252918287937743,False,yeo_johnson,3,median
+credit_amount_div_COUNT_payments,dfs_features,0.215,0.4,median,95.9090909090909,True,yeo_johnson,3,median +I
+credit_amount_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.215,0.4,median,0.0606054406535879,True,yeo_johnson,3,median +I
+credit_amount_div_MAX_payments_AMT_PAYMENT,dfs_features,0.215,0.4,median,0.0588908001181131,True,yeo_johnson,3,median +I
+credit_amount_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.215,0.4,median,162.31313131313132,True,yeo_johnson,3,median +I
+credit_amount_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.215,0.4,median,0.165611471591565,True,yeo_johnson,3,median +I
+credit_amount_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.215,0.4,median,0.16904789656160765,True,yeo_johnson,3,median +I
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.215,0.4,median,347.2413793103448,True,yeo_johnson,3,median +I
+duration_div_COUNT_payments,dfs_features,0.0138,0.1,median,0.7058823529411765,False,yeo_johnson,3,median
+duration_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0004283405530133,False,yeo_johnson,3,median
+duration_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0004224318716398,False,yeo_johnson,3,median
+duration_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,1.263157894736842,False,yeo_johnson,3,median
+duration_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,0.0013160413133977,False,yeo_johnson,3,median
+duration_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,0.0013491072072258,False,yeo_johnson,3,median
+duration_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2.7142857142857144,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_COUNT_payments,dfs_features,0.0138,0.1,median,3.218875824868201,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MAX_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,10.6474507010815,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MAX_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,10.673595774232204,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,2.4849066497880004,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0138,0.1,median,9.497466716175984,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_PAYMENT,dfs_features,0.0138,0.1,median,9.491371765769417,False,yeo_johnson,3,median
+NATURAL_LOGARITHM_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0138,0.1,median,1.799306674863438,False,yeo_johnson,3,median
+duration,numeric_continuous,0.0,0.1,median,18.0,False,interactions → yeo_johnson,4,median
+credit_amount,numeric_continuous,0.2037,0.4,median,2329.0,True,interactions → yeo_johnson,4,median +I
+age,numeric_continuous,0.05,0.1,median,33.0,False,interactions → yeo_johnson,4,median
+installment_rate,numeric_discrete,0.0,0.1,median,3.0,False,standard_scaler,4,median
+residence_since,numeric_discrete,0.4975,1.0,constant,0,True,standard_scaler,4,constant +I
+existing_credits,numeric_discrete,0.0,0.1,median,1.0,False,standard_scaler,4,median
+checking_account,categorical_nominal,0.0,0.1,most_frequent,no account,False,oof_woe,4,most_frequent
+credit_history,categorical_nominal,0.0,0.1,most_frequent,existing paid duly,False,oof_woe,4,most_frequent
+purpose,categorical_nominal,0.2375,1.0,constant,Missing,False,oof_woe,4,constant
+savings_account,categorical_nominal,0.0625,0.1,most_frequent,<100 DM,False,oof_woe,4,most_frequent
+other_debtors,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,4,most_frequent
+property,categorical_nominal,0.0,0.1,most_frequent,car or other,False,oof_woe,4,most_frequent
+other_installment_plans,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,4,most_frequent
+housing,categorical_nominal,0.0,0.1,most_frequent,own,False,oof_woe,4,most_frequent
+telephone,categorical_nominal,0.0,0.1,most_frequent,none,False,oof_woe,4,most_frequent
+employment_since,categorical_ordinal,0.1475,1.0,constant,Missing,False,ordinal_encoder → standard_scaler,4,constant
+job,categorical_ordinal,0.0338,0.1,most_frequent,skilled employee,False,ordinal_encoder → standard_scaler,4,most_frequent
+complaint_text,complaint_text,0.0,1.0,constant,,False,tfidf_svd → standard_scaler,4,constant
+complaint_month,complaint_time,0.0,0.1,median,7.0,False,cyclic_time,4,median
+complaint_weekday,complaint_time,0.0,0.1,median,2.0,False,cyclic_time,4,median
+complaint_company,high_cardinality,0.0,0.1,most_frequent,Santander Consumer USA Holdings Inc,False,oof_woe,4,most_frequent
+sig_zcr,payment_signal,0.0262,0.1,median,0.1160714285714285,False,standard_scaler,4,median
+sig_centroid,payment_signal,0.0262,0.1,median,1.8953025059032136,False,standard_scaler,4,median
+sig_mfcc0,payment_signal,0.0262,0.1,median,58.099427827830894,False,standard_scaler,4,median
+sig_mfcc1,payment_signal,0.0262,0.1,median,7.503766152367263,False,standard_scaler,4,median
+sig_mfcc2,payment_signal,0.0262,0.1,median,-35.21950649207889,False,standard_scaler,4,median
+sig_mfcc3,payment_signal,0.0262,0.1,median,0.3623291962392101,False,standard_scaler,4,median
+sig_mfcc4,payment_signal,0.0262,0.1,median,-36.578843761907166,False,standard_scaler,4,median
+sig_mfcc5,payment_signal,0.0262,0.1,median,-2.784039970128354,False,standard_scaler,4,median
+sig_mfcc6,payment_signal,0.0262,0.1,median,-35.57657798148125,False,standard_scaler,4,median
+sig_mfcc7,payment_signal,0.0262,0.1,median,-3.4318805413978137,False,standard_scaler,4,median
+sig_mfcc8,payment_signal,0.0262,0.1,median,-31.791380404684247,False,standard_scaler,4,median
+sig_mfcc9,payment_signal,0.0262,0.1,median,-2.8164715729827665,False,standard_scaler,4,median
+sig_mfcc10,payment_signal,0.0262,0.1,median,-26.122386571279783,False,standard_scaler,4,median
+sig_mfcc11,payment_signal,0.0262,0.1,median,-1.4881003669657145,False,standard_scaler,4,median
+sig_mfcc12,payment_signal,0.0262,0.1,median,-19.90633207486581,False,standard_scaler,4,median
+COUNT_payments,dfs_features,0.0,0.1,median,25.5,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,40038.345,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,41181.9525,False,yeo_johnson,4,median
+MAX_payments_DAYS_INSTALMENT,dfs_features,0.0225,0.1,median,-60.5,False,yeo_johnson,4,median
+MAX_payments_DAYS_LATE,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,12.0,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,13611.963490979382,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,13387.177866847825,False,yeo_johnson,4,median
+MEAN_payments_DAYS_INSTALMENT,dfs_features,0.0225,0.1,median,-795.0,False,yeo_johnson,4,median
+MEAN_payments_DAYS_LATE,dfs_features,0.0225,0.1,median,-9.775210084033613,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,6.099407504937458,False,yeo_johnson,4,median
+age_div_credit_amount,dfs_features,0.2487,0.4,median,0.014623172103487,True,yeo_johnson,4,median +I
+age_div_duration,dfs_features,0.05,0.1,median,1.8333333333333333,False,yeo_johnson,4,median
+credit_amount_div_age,dfs_features,0.2487,0.4,median,68.38461538461539,True,yeo_johnson,4,median +I
+credit_amount_div_duration,dfs_features,0.2037,0.4,median,129.66666666666666,True,yeo_johnson,4,median +I
+duration_div_age,dfs_features,0.05,0.1,median,0.5454545454545454,False,yeo_johnson,4,median
+duration_div_credit_amount,dfs_features,0.2037,0.4,median,0.0077120822622107,True,yeo_johnson,4,median +I
+NATURAL_LOGARITHM_age,dfs_features,0.05,0.1,median,3.49650756146648,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_credit_amount,dfs_features,0.2037,0.4,median,7.753194269884341,True,yeo_johnson,4,median +I
+NATURAL_LOGARITHM_duration,dfs_features,0.0,0.1,median,2.8903717578961645,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0238,0.1,median,1.0,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,18853.942499999997,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,18970.447500000002,False,yeo_johnson,4,median
+MAX_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,10.597589449364317,False,yeo_johnson,4,median
+MAX_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0225,0.1,median,10.625748715250097,False,yeo_johnson,4,median
+MAX_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2.4849066497880004,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0017867449216865,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0238,0.1,median,0.0040957975541787,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_AMT_PAYMENT,dfs_features,0.0238,0.1,median,1.0,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,3552.2643333333335,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,3551.2886080884136,False,yeo_johnson,4,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,9.195975176749265,False,yeo_johnson,4,median
+MEAN_payments_NATURAL_LOGARITHM_AMT_PAYMENT,dfs_features,0.0238,0.1,median,9.08509181665342,False,yeo_johnson,4,median
+MEAN_payments_NATURAL_LOGARITHM_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,1.5828684736049756,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0006998603673995,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_AMT_PAYMENT,dfs_features,0.0238,0.1,median,0.0011712250494977,False,yeo_johnson,4,median
+COUNT_payments_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.00060550090891725,False,yeo_johnson,4,median
+COUNT_payments_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.0005816613033266999,False,yeo_johnson,4,median
+COUNT_payments_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,1.6666666666666667,False,yeo_johnson,4,median
+COUNT_payments_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.00192612524324005,False,yeo_johnson,4,median
+COUNT_payments_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.00191695936966415,False,yeo_johnson,4,median
+COUNT_payments_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,3.649310247305408,False,yeo_johnson,4,median
+COUNT_payments_div_age,dfs_features,0.05,0.1,median,0.7564271588661833,False,yeo_johnson,4,median
+COUNT_payments_div_credit_amount,dfs_features,0.2037,0.4,median,0.0104011887072808,True,yeo_johnson,4,median +I
+COUNT_payments_div_duration,dfs_features,0.0,0.1,median,1.4444444444444444,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0225,0.1,median,1651.5384827586206,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2866.02324010327,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,2.9661139468710465,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,2.9469457921334143,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,6160.544833178868,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_age,dfs_features,0.0712,0.1,median,1142.2378125,False,yeo_johnson,4,median
+MAX_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2238,0.4,median,16.305986394557824,True,yeo_johnson,4,median +I
+MAX_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0225,0.1,median,2336.328,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0225,0.1,median,1719.2165217391307,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2914.0200000000004,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,3.0666764266693844,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,3.004610900414531,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,6301.680240664517,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_age,dfs_features,0.0712,0.1,median,1157.8005,False,yeo_johnson,4,median
+MAX_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2238,0.4,median,16.933746397694524,True,yeo_johnson,4,median +I
+MAX_payments_AMT_PAYMENT_div_duration,dfs_features,0.0225,0.1,median,2359.2825000000003,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0225,0.1,median,0.6,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0003489164486311,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.00034317431982120003,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0010784731212691002,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.00108153149276245,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2.1509819021948404,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0712,0.1,median,0.4102564102564102,False,yeo_johnson,4,median
+MAX_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2238,0.4,median,0.0061559507523939,True,yeo_johnson,4,median +I
+MAX_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0225,0.1,median,0.8,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_COUNT_payments,dfs_features,0.0225,0.1,median,519.178508810424,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.3371426393053809,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.32608761382315365,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,927.2421180555557,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2059.1338655462187,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_age,dfs_features,0.0712,0.1,median,393.791451923077,False,yeo_johnson,4,median
+MEAN_payments_AMT_INSTALMENT_div_credit_amount,dfs_features,0.2238,0.4,median,5.4355656953434135,True,yeo_johnson,4,median +I
+MEAN_payments_AMT_INSTALMENT_div_duration,dfs_features,0.0225,0.1,median,761.8302604166668,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_COUNT_payments,dfs_features,0.0225,0.1,median,521.661513888889,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.33933437520049714,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.3328218018806583,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,924.6147816820277,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,1.0,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2009.2730678671144,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_age,dfs_features,0.0712,0.1,median,386.1046428571429,False,yeo_johnson,4,median
+MEAN_payments_AMT_PAYMENT_div_credit_amount,dfs_features,0.2238,0.4,median,5.5626153324287655,True,yeo_johnson,4,median +I
+MEAN_payments_AMT_PAYMENT_div_duration,dfs_features,0.0225,0.1,median,747.651714326484,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_COUNT_payments,dfs_features,0.0225,0.1,median,0.27402483712874676,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0001623241158946,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.000158695572494,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,0.46490395818768926,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0004856410829819,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.00049769265344355,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_age,dfs_features,0.0712,0.1,median,0.187683284457478,False,yeo_johnson,4,median
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_credit_amount,dfs_features,0.2238,0.4,median,0.0027986566448104,True,yeo_johnson,4,median +I
+MEAN_payments_NUM_INSTALMENT_NUMBER_div_duration,dfs_features,0.0225,0.1,median,0.36384479717813045,False,yeo_johnson,4,median
+age_div_COUNT_payments,dfs_features,0.0712,0.1,median,1.3,False,yeo_johnson,4,median
+age_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0712,0.1,median,0.000875474431906,False,yeo_johnson,4,median
+age_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0712,0.1,median,0.0008637066575804,False,yeo_johnson,4,median
+age_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0712,0.1,median,2.4375,False,yeo_johnson,4,median
+age_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0712,0.1,median,0.0025394152034446,False,yeo_johnson,4,median
+age_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0712,0.1,median,0.0025899714455648,False,yeo_johnson,4,median
+age_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0712,0.1,median,5.328125,False,yeo_johnson,4,median
+credit_amount_div_COUNT_payments,dfs_features,0.2238,0.4,median,93.24242424242424,True,yeo_johnson,4,median +I
+credit_amount_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.2238,0.4,median,0.061327170022278,True,yeo_johnson,4,median +I
+credit_amount_div_MAX_payments_AMT_PAYMENT,dfs_features,0.2238,0.4,median,0.0590536775805351,True,yeo_johnson,4,median +I
+credit_amount_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2238,0.4,median,162.44444444444446,True,yeo_johnson,4,median +I
+credit_amount_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.2238,0.4,median,0.1839734916379887,True,yeo_johnson,4,median +I
+credit_amount_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.2238,0.4,median,0.1797715535299071,True,yeo_johnson,4,median +I
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.2238,0.4,median,357.3142857142857,True,yeo_johnson,4,median +I
+duration_div_COUNT_payments,dfs_features,0.0225,0.1,median,0.6666666666666666,False,yeo_johnson,4,median
+duration_div_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0004280223293794,False,yeo_johnson,4,median
+duration_div_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.00042386250579085,False,yeo_johnson,4,median
+duration_div_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,1.25,False,yeo_johnson,4,median
+duration_div_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,0.0013126286523386498,False,yeo_johnson,4,median
+duration_div_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,0.0013375212503339501,False,yeo_johnson,4,median
+duration_div_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2.7484272074605878,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_COUNT_payments,dfs_features,0.0225,0.1,median,3.295836866004329,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MAX_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,10.597589449364317,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MAX_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,10.625748715250097,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MAX_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,2.4849066497880004,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_INSTALMENT,dfs_features,0.0225,0.1,median,9.518699995080453,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MEAN_payments_AMT_PAYMENT,dfs_features,0.0225,0.1,median,9.502044061520941,False,yeo_johnson,4,median
+NATURAL_LOGARITHM_MEAN_payments_NUM_INSTALMENT_NUMBER,dfs_features,0.0225,0.1,median,1.8081915429272781,False,yeo_johnson,4,median

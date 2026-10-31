@@ -1,0 +1,5 @@
+outs:
+- md5: f74d98141d8d5bb72295aa10e558732c
+  size: 34908
+  hash: md5
+  path: lab2_test_predictions.csv

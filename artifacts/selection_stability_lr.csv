@@ -1,0 +1,18 @@
+,фолдів (з 5)
+duration_div_age,5
+checking_account,5
+credit_history,5
+purpose,4
+duration,4
+property,3
+MAX_payments_AMT_INSTALMENT_div_MAX_payments_AMT_PAYMENT,3
+duration_div_MEAN_payments_AMT_INSTALMENT,3
+installment_rate,3
+savings_account,2
+other_debtors,1
+duration_div_credit_amount,1
+credit_amount_div_MEAN_payments_NUM_INSTALMENT_NUMBER,1
+NATURAL_LOGARITHM_age,1
+complaint_text_svd4,1
+MAX_payments_AMT_INSTALMENT_div_AMT_PAYMENT,1
+credit_amount_div_COUNT_payments,1

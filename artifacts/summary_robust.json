@@ -1,0 +1,39 @@
+{
+  "final_model": "RF",
+  "final_cost_per_applicant": {
+    "LR": 103.05,
+    "RF": 99.45
+  },
+  "T_star_mean_curve": {
+    "LR/base": 0.115,
+    "LR/cs": 0.53,
+    "RF/base": 0.14,
+    "RF/cs": 0.65
+  },
+  "thresholds_inner": {
+    "LR": [
+      0.62,
+      0.485,
+      0.5700000000000001,
+      0.53,
+      0.545
+    ],
+    "RF": [
+      0.59,
+      0.515,
+      0.42,
+      0.5750000000000001,
+      0.545
+    ]
+  },
+  "lab2_auc": {
+    "3. Extracted + AutoFE [LR]": 0.7604761904761904,
+    "3. Extracted + AutoFE [RF]": 0.7567989417989419,
+    "4. Leaky Pipeline [LR]": 0.8606349206349206,
+    "4. Leaky Pipeline [RF]": 0.8160846560846562
+  },
+  "clean_auc": {
+    "LR": 0.773068783068783,
+    "RF": 0.7161375661375662
+  }
+}
